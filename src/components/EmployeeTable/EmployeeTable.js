@@ -9,27 +9,10 @@ class EmployeeTable extends Component {
         aToz: true,
         ascending: true,
         employeeListing: [],
+       
     }
 
-    handleInputChange = event => {
-        this.setState({
-            searchTerm: event.target.value
-        });
-        let userTyped = event.target.value;
-        const filteredList = this.props.employees.filter((item) => {
-            let values = item.name.title + item.name.first + item.name.last + item.gender + item.dob.age + item.email + item.cell;
-            return values.indexOf(userTyped) !== -1;
     
-        });
-    
-        this.setState({
-            filteredEmployees: filteredList
-    
-        });
-      }
-
-
-
     componentDidMount() {
         API.randomUser().then(res => {
             console.log(res.data.results)
@@ -83,6 +66,46 @@ class EmployeeTable extends Component {
         }
     }
 
+    sortByAge = () => {
+        let sort = [];
+        console.log(this.state.employeeListing)
+        if(this.state.ascending){
+        sort = this.state.employeeListing.sort((a, b) => {
+            let alphaA = a.dob.age;
+            let alphaB = b.dob.age;
+            if(alphaA < alphaB) {
+                return -1
+            } else if (alphaA > alphaB) {
+                return 1 
+            }else {
+                return 0;
+            }
+            
+         }); 
+         
+         this.setState({
+             ascending:false
+         })
+        }
+        else{
+            sort = this.state.employeeListing.sort((a, b) => {
+                let alphaA = a.dob.age;
+                let alphaB = b.dob.age;
+                if(alphaA < alphaB) {
+                    return 1
+                } else if (alphaA > alphaB) {
+                    return -1
+                }else {
+                    return 0;
+                }
+                
+             }); 
+            this.setState({
+                ascending:true
+            })
+        }
+    }
+
     render() {
         return (
             <div>
@@ -92,7 +115,7 @@ class EmployeeTable extends Component {
             <tr>
                     <th scope="col">Photo</th>
                     <th scope="col"onClick={this.sortByName} className="name">Name </th>
-                    <th scope="col">Age</th>
+                    <th scope="col"onClick={this.sortByAge} className="age">Age</th>
                     <th scope="col">Phone</th>
                     <th scope="col">E-mail</th>
                     </tr>
