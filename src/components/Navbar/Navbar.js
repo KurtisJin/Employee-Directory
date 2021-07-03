@@ -1,26 +1,28 @@
-import React, { useContext } from "react";
-import userContext from '../utils/Context';
+import React from "react";
 import '../Navbar/nav.css'
+import EmployeeTable from "../EmployeeTable/EmployeeTable";
 
-// Depending on the current path, this component sets the "active" class on the appropriate navigation link item
-function Navbar() {
-  const context = useContext(userContext)
-  return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-      <div class="navbar-brand">Employee Directory</div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={e => context.handleSearchChange(e)}/>
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+
+
+  function Navbar() {
+    
+  
+    return (
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+        <div className="navbar-brand">Employee Directory</div>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <form className="d-flex">
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={e => handleInputChange(e)}/>
+              <button className="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
         </div>
-      </div>
-  </nav>
-);
-}
+    </nav>
+    );
+  }
 
 export default Navbar;

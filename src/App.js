@@ -1,15 +1,15 @@
 import React from "react";
 import Navbar from "./components/Navbar/Navbar"
 import Wrapper from "./components/Wrapper/Wrapper"
-import Main from "./components/Main/main"
+import Card from "./components/EmployeeTable/EmployeeTable"
+
 
 function App() {
   return (  
     <div>
         
       <Wrapper>
-        <Navbar />
-        <Main />
+        <Card />
       </Wrapper>      
     </div>
     
