@@ -9,6 +9,7 @@ class EmployeeTable extends Component {
         aToz: true,
         ascending: true,
         employeeListing: [],
+        filteredEmployees: []
        
     }
 
@@ -17,14 +18,27 @@ class EmployeeTable extends Component {
         API.randomUser().then(res => {
             console.log(res.data.results)
             this.setState(
-                   { employeeListing : res.data.results}
+                   { employeeListing : res.data.results,
+                    filteredEmployees: res.data.results}
 
             )
         })
         .catch(err => console.log(err));
         }
     
+    handleInputSearch = (e) => {
+        console.log(e.target.value)
+        let input = e.target.value
+        let filtered =this.state.employeeListing.filter((employee) => {
+            return employee.name.last.includes(input);
+        })
 
+        this.setState({
+            filteredEmployees: filtered
+        })
+
+
+    }
 
     sortByName = () => {
         let sort = [];
@@ -109,7 +123,7 @@ class EmployeeTable extends Component {
     render() {
         return (
             <div>
-            <Navbar />
+            <Navbar handleInputSearch={this.handleInputSearch} />
             <table className="table">
                 <thead>
             <tr>
@@ -122,8 +136,8 @@ class EmployeeTable extends Component {
                 </thead>
                 <tbody>
                 {
-                    this.state.employeeListing.length > 0 &&
-                    this.state.employeeListing.map((item, index) => (
+                    this.state.filteredEmployees.length > 0 &&
+                    this.state.filteredEmployees.map((item, index) => (
 
                             <EmployeeCard
                                 image={item.picture.medium}

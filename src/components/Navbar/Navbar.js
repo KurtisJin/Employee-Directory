@@ -1,7 +1,7 @@
 import React from "react";
 import '../Navbar/nav.css'
 import EmployeeTable from "../EmployeeTable/EmployeeTable";
-import Search from "../Search/Search"
+import Search from "../SearchResults/SearchResults"
 
 
 
@@ -17,7 +17,7 @@ import Search from "../Search/Search"
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <Search />
+          <Search handleInputSearch={props.handleInputSearch} />
           </div>
         </div>
     </nav>
