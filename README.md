@@ -14,7 +14,7 @@
   9. [Questions](#questions)
 
 ## Description:
-Keep Track of your spending!
+Be able to look up employees in your company and sort them by alphabetical order
 
 ## Installation:
  You will need to install node, axios, react, bootstrap, eslint
