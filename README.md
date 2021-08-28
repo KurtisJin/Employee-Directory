@@ -1,4 +1,5 @@
 # Employee-Directory
+Be able to look up employees in your company and sort them by alphabetical order
 
 ## Badge: ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
